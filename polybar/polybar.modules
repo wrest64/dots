@@ -1,0 +1,257 @@
+;; ┌────────────────────────────────────────────────────────────────┐
+;; │░█▀█░█▀█░█░░░█░█░█▀▄░█▀█░█▀▄░░░░░░░░░█▄█░█▀█░█▀▄░█░█░█░░░█▀▀░█▀▀│
+;; │░█▀▀░█░█░█░░░░█░░█▀▄░█▀█░█▀▄░░░░▀░░░░█░█░█░█░█░█░█░█░█░░░█▀▀░▀▀█│
+;; │░▀░░░▀▀▀░▀▀▀░░▀░░▀▀░░▀░▀░▀░▀░░░░▀░░░░▀░▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀▀▀│
+;; └────────────────────────────────────────────────────────────────┘
+
+######  List of available modules ###### 
+;; battery
+;; bspwm
+;; cpu
+;; date
+;; mem
+;; pulseaudio
+;; spacer
+;; temperature
+;; weather
+;; wireless
+;; wlan
+;; xwindow
+
+
+######  Modules ###### 
+
+
+[module/battery]
+;https://github.com/jaagr/polybar/wiki/Module:-battery
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 100
+
+format-charging =  <ramp-capacity> <label-charging>
+;format-charging-foreground = ${color.yellow}
+;format-charging-background = ${color.blue}
+label-charging = %percentage%%
+;label-charging-foreground = ${color.yellow}
+;label-charging-background = ${color.blue}
+format-charging-overline = ${color.yellow}
+;format-charging-underline = ${color.blue}
+
+format-discharging =  <ramp-capacity> <label-discharging>
+;format-discharging-foreground = ${color.yellow}
+;format-discharging-background = ${color.blue}
+label-discharging = %percentage%%
+;label-discharging-foreground = ${color.yellow}
+;label-discharging-background = ${color.blue}
+format-discharging-overline = ${color.yellow}
+;format-discharging-underline = ${color.blue}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${color.green}
+;format-full-prefix-background = ${color.blue}
+format-full-overline = ${color.yellow}
+;format-full-underline = ${color.blue}
+
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =  
+ramp-capacity-3 =  
+ramp-capacity-4 =  
+
+ramp-capacity-0-foreground = ${color.red}
+ramp-capacity-1-foreground = ${color.yellow}
+ramp-capacity-2-foreground = ${color.yellow}
+ramp-capacity-3-foreground = ${color.yellow}
+ramp-capacity-4-foreground = ${color.yellow}
+;ramp-capacity-0-background = ${color.blue}
+;ramp-capacity-1-background = ${color.blue}
+;ramp-capacity-2-background = ${color.blue}
+;ramp-capacity-3-background = ${color.blue}
+;ramp-capacity-4-background = ${color.blue}
+
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${color.green}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+;format-prefix = " "
+;format-prefix-foreground = ${color.shade4}
+;format-foreground = ${color.modulefg}
+;format-background = ${color.shade6}
+;format-underline = #f90000
+label = CPU %percentage:2%%
+
+
+[module/date]
+type = internal/date
+interval = 1.0
+date =  %a, %b %d
+date-alt =  %F
+format = <label>
+label = %date%
+;format-foreground = ${color.blue}
+;format-background = ${color.cyan}
+format-overline = ${color.blue}
+;format-underline = ${color.cyan}
+
+
+[module/time]
+type = internal/date
+interval = 1.0
+time =  %l:%M %p
+time-alt =  %T
+format = <label>
+label = %time%
+;format-foreground = ${color.foreground}
+;format-background = ${color.purple}
+format-overline = ${color.white}
+;format-underline = ${color.purple}
+
+
+[module/mem]
+type = internal/memory
+interval = 2
+label = MEM %percentage_used%%
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+;format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume> 
+label-volume =  %percentage%%
+;format-volume-foreground = ${color.purple}
+;format-volume-background = ${color.orange}
+format-volume-overline = ${color.purple}
+;format-volume-underline = ${color.orange}
+
+label-muted =   muted
+label-muted-foreground = ${color.grey}
+
+bar-volume-width = 20
+bar-volume-foreground-0 = ${color.green}
+bar-volume-foreground-1 = ${color.green}
+bar-volume-foreground-2 = ${color.green}
+bar-volume-foreground-3 = ${color.green}
+bar-volume-foreground-4 = ${color.green}
+bar-volume-foreground-5 = ${color.green}
+bar-volume-foreground-6 = ${color.green}
+bar-volume-foreground-7 = ${color.yellow}
+bar-volume-foreground-8 = ${color.yellow}
+bar-volume-foreground-9 = ${color.red}
+bar-volume-gradient = false
+bar-volume-indicator = O
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/spacer]
+type = custom/text
+content = " "
+
+[module/rchev]
+type = custom/text
+content-foreground = ${color.yellow}
+content = ""
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <label>
+format-underline = #f50a4d
+format-warn = <label-warn>
+format-warn-underline = ${self.format-underline}
+format-background = ${color.background}
+format-foreground = ${color.foreground}
+
+label = %temperature-c%
+label-warn =    %temperature-c%
+label-warn-foreground = ${color.red}
+
+[module/getStation]
+type=custom/script
+exec = echo '' $(iw dev | grep Interface | awk '{print $2}')
+
+[module/weather]
+type = custom/script
+exec = curl -s 'wttr.in/Swarthmore?u&format=%20%t%20%C'
+;exec = curl -s 'wttr.in/Leesburg?u&format=%20%t%20%C'
+interval = 1800
+click-left = "notify-send 'Loading Radar...' && mpv --loop-file=inf https://radar.weather.gov/ridge/standard/KDIX_loop.gif"
+;format-foreground = ${color.orange}
+;format-background = ${color.yellow}
+format-overline = ${color.orange}
+;format-underline = ${color.yellow}
+
+[module/wireless]
+type=internal/network
+
+format-connected=<label-connected>
+;format-connected-foreground = ${color.green}
+;format-connected-background = ${color.green}
+format-disconnected=<label-disconnected>
+;format-disconnected-foreground = ${color.red}
+;format-disconnected-background = ${color.red}
+interval=5
+
+interface = wlp0s20f3
+
+;label-connected = " %essid%"
+label-connected = " Connected"
+label-connected-overline = ${color.green}
+;label-connected-underline = ${color.green}
+label-disconnected = " No Wi-Fi"
+label-disconnected-overline = ${color.red}
+;label-disconnected-underline = ${color.red}
+
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-padding = 0
+label-connected = "%{A1:nm-applet:}W %{A}"
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:90:...%
+;label-foreground = ${xrdb:color6}
+
+
+[module/bspwm]
+type = internal/bspwm
+
+label-empty = %name%
+label-focused = %name%
+label-urgent = %name%
+label-occupied = %name%
+
+label-empty-padding = 1
+label-focused-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+ 
+label-empty-foreground = ${color.grey}
+label-focused-foreground = ${color.yellow}
+label-urgent-foreground = ${color.red}
+label-occupied-foreground = ${color.foreground}
+
+label-focused-overline = ${color.yellow}
+;label-focused-underline = ${color.yellow}
